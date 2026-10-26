@@ -1,7 +1,7 @@
 function App() {
   return (
     <div>
-      <p>Chat em tempo real</p>
+      <p>Chat em tempo real!</p>
     </div>
   );
 }
