@@ -12,11 +12,16 @@ export type Contact = {
 
 type ConversationItemProps = {
   contact: Contact;
+  isSelected: boolean;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-export default function ConversationItem({ contact }: ConversationItemProps) {
+export default function ConversationItem({
+  contact,
+  isSelected,
+  ...rest
+}: ConversationItemProps) {
   return (
-    <button className="item">
+    <button className={`item ${isSelected ? "active" : ""}`} {...rest}>
       <UserProfileAvatar contact={contact} />
       <div className="mid">
         <div className="row">
