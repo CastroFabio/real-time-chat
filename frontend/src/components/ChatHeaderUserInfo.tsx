@@ -1,4 +1,4 @@
-import type { Contact } from "./ConversationItem";
+import type { Contact } from "../types/chat";
 
 type ChatHeaderUserInfoProps = {
   contact: Contact;

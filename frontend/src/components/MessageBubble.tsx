@@ -1,9 +1,4 @@
-export interface Message {
-  id: string;
-  text: string;
-  sender: "me" | "other";
-  timestamp?: string;
-}
+import type { Message } from "../types/chat";
 
 type MessageBubbleProps = {
   message: Message;

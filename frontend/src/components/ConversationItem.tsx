@@ -1,14 +1,5 @@
+import type { Contact } from "../types/chat";
 import UserProfileAvatar from "./UserProfileAvatar";
-
-export type Contact = {
-  id: string;
-  name: string;
-  avatarUrl: string;
-  lastMessage: string;
-  timestamp: string;
-  unreadCount?: number;
-  online: boolean;
-};
 
 type ConversationItemProps = {
   contact: Contact;

@@ -1,5 +1,5 @@
+import type { Contact } from "../types/chat";
 import { getInitials } from "../utils/getInitials";
-import type { Contact } from "./ConversationItem";
 
 type UserProfileAvatarProps = {
   contact: Contact;
