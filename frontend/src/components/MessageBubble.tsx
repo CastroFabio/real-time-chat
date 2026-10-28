@@ -1,5 +1,3 @@
-import React from "react";
-
 export interface Message {
   id: string;
   text: string;
@@ -7,7 +5,11 @@ export interface Message {
   timestamp?: string;
 }
 
-const MessageBubble: React.FC<{ message: Message }> = ({ message }) => {
+type MessageBubbleProps = {
+  message: Message;
+};
+
+export default function MessageBubble({ message }: MessageBubbleProps) {
   const isMe = message.sender === "me";
 
   return (
@@ -16,6 +18,4 @@ const MessageBubble: React.FC<{ message: Message }> = ({ message }) => {
       <span className="t">{message.timestamp}</span>
     </div>
   );
-};
-
-export default MessageBubble;
+}
