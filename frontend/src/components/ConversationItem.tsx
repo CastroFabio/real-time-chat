@@ -1,6 +1,6 @@
 import UserProfileAvatar from "./UserProfileAvatar";
 
-export interface Contact {
+export type Contact = {
   id: string;
   name: string;
   avatarUrl: string;
@@ -8,9 +8,13 @@ export interface Contact {
   timestamp: string;
   unreadCount?: number;
   online: boolean;
-}
+};
 
-const ConversationItem: React.FC<{ contact: Contact }> = ({ contact }) => {
+type ConversationItemProps = {
+  contact: Contact;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+export default function ConversationItem({ contact }: ConversationItemProps) {
   return (
     <button className="item">
       <UserProfileAvatar contact={contact} />
@@ -30,6 +34,4 @@ const ConversationItem: React.FC<{ contact: Contact }> = ({ contact }) => {
       </div>
     </button>
   );
-};
-
-export default ConversationItem;
+}

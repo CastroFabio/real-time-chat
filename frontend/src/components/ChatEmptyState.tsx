@@ -1,6 +1,4 @@
-import React from "react";
-
-const ChatEmptyState = () => {
+export default function ChatEmptyState() {
   return (
     <div className="empty hidden" id="empty">
       <div>
@@ -12,6 +10,4 @@ const ChatEmptyState = () => {
       </div>
     </div>
   );
-};
-
-export default ChatEmptyState;
+}
