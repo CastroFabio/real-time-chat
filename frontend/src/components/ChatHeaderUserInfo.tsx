@@ -1,4 +1,4 @@
-import type { Contact } from "./ConversationItem";
+import type { Contact } from "../types/chat";
 
 type ChatHeaderUserInfoProps = {
   contact: Contact;
@@ -9,8 +9,8 @@ export default function ChatHeaderUserInfo({
 }: ChatHeaderUserInfoProps) {
   return (
     <div className="who">
-      <b id="hName">{contact.name}</b>
-      <small id="hSt">{contact.online ? "online" : "offline"}</small>
+      <b id="hName">{contact?.name}</b>
+      <small id="hSt">{contact?.online ? "online" : "offline"}</small>
     </div>
   );
 }
