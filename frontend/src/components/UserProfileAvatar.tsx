@@ -8,7 +8,7 @@ type UserProfileAvatarProps = {
 export default function UserProfileAvatar({ contact }: UserProfileAvatarProps) {
   return (
     <div className="av" id="hAv" style={{ backgroundColor: "#0b7285" }}>
-      {getInitials(contact?.name)}
+      {getInitials(contact?.name ?? `Usuário #${contact?.id}`)}
       {contact?.online ? <span className={`st`}></span> : ""}
     </div>
   );

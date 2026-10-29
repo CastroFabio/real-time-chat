@@ -6,9 +6,7 @@ import { ChatContext } from "./ChatContextObject";
 export const ChatProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [selectedContact, setSelectedContact] = useState<Contact | null>(
-    recentConversations[0] || null,
-  );
+  const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
 
   const selectContact = (contact: Contact) => {
     setSelectedContact(contact);

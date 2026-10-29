@@ -1,5 +1,4 @@
-import type { Contact } from "../components/ConversationItem";
-import type { Message } from "../components/MessageBubble";
+import type { Contact, Message } from "../types/chat";
 
 export const recentConversations: Contact[] = [
   {

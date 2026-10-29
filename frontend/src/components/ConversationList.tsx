@@ -1,13 +1,9 @@
-import { useState } from "react";
+import { useChat } from "../hooks/useChat";
 import { recentConversations } from "../mock/mockData";
 import ConversationItem from "./ConversationItem";
 
 const ConversationList = () => {
-  const [selectedID, setSelectedID] = useState<string | null>(null);
-
-  const selectContact = (contactID: string) => {
-    setSelectedID(contactID);
-  };
+  const { selectedContact, selectContact } = useChat();
 
   return (
     <ul className="list">
@@ -15,8 +11,8 @@ const ConversationList = () => {
         <li key={element.id}>
           <ConversationItem
             contact={element}
-            onClick={() => selectContact(element.id)}
-            isSelected={element.id === selectedID}
+            onClick={() => selectContact(element)}
+            isSelected={element.id === selectedContact?.id}
           />
         </li>
       ))}
