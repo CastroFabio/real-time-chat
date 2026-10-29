@@ -11,6 +11,7 @@ export type Contact = {
 export type Message = {
   id: string;
   text: string;
-  sender: "me" | "other";
+  sender_id: string;
+  receiver_id: string;
   timestamp: string;
 };
