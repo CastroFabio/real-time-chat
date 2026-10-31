@@ -1,0 +1,89 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+      #messages {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      #messages li {
+        padding: 5px 10px;
+      }
+
+      #messages li:nth-child(odd) {
+        background: #f2f2f2;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+      }
+
+      .joined {
+        color: green;
+      }
+
+      .left {
+        color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <ul id="messages"></ul>
+      <input type="text" id="messageInput" placeholder="Message" />
+      <button id="sendButton">Send</button>
+    </div>
+
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+    <script>
+      const socket = io("http://localhost:3000");
+
+      const messageInput = document.getElementById("messageInput");
+      const sendButton = document.getElementById("sendButton");
+      const messagesList = document.getElementById("messages");
+
+      function addMessage(message, className) {
+        const li = document.createElement("li");
+        li.textContent = message;
+        if (className) {
+          li.classList.add(className);
+        }
+        messagesList.appendChild(li);
+      }
+
+      socket.on("message", (data) => {
+        addMessage(`${data.username}: ${data.message}`);
+      });
+
+      socket.on("user-joined", (data) => {
+        addMessage(data.message, "joined");
+      });
+
+      socket.on("user-left", (data) => {
+        addMessage(data.message, "left");
+      });
+
+      sendButton.addEventListener("click", () => {
+        const message = messageInput.value.trim();
+        if (message !== "") {
+          console.log(message);
+          socket.emit("newMessage", { message, username: socket.id });
+          messageInput.value = "";
+        }
+      });
+
+      socket.on("connect", () => {
+        addMessage("You have joined the chat!");
+      });
+    </script>
+  </body>
+</html>
